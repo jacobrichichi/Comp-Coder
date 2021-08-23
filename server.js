@@ -13,6 +13,7 @@ const socketIO = require("socket.io");
 
 
 const io = socketIO(server);
+const config = require('dotenv').config();
 
 var rooms = 0;
 var namesToLobbies = [];
@@ -55,8 +56,6 @@ app.get("*", (req, res) =>
 );
 
 const port = process.env.PORT || 5000; 
-process.env.SKIP_PREFLIGHT_CHECK=true
-
 
 io.on('connection', function(socket){
   socket.on("getLobbies", () =>{
